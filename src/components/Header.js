@@ -13,9 +13,9 @@ function Header() {
 
     return (   
         <div className="header white-border" onClick={() => set(state => !state)}>
-            <a.div class="h-img back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }} />
+            <a.div className="h-img back" style={{ opacity: opacity.interpolate(o => 1 - o), transform }} />
             <h1>Spooky Headline</h1>
-            <a.div class="h-img front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }} />
+            <a.div className="h-img front" style={{ opacity, transform: transform.interpolate(t => `${t} rotateX(180deg)`) }} />
         </div> 
     )
 }
