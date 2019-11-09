@@ -17,10 +17,12 @@
   
 .front,
 .back {
+    z-index: 100;
     background-size: cover;
 }
   
 .back {
+    z-index: 100;
     background-image: url('../images/chat.png');
 }
 
