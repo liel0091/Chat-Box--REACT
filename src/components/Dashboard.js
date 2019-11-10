@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col, Alert} from 'react-bootstrap';
+import {Row, Col} from 'react-bootstrap';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox'; 
 

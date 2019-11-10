@@ -23,6 +23,7 @@ function ChatBox() {
 
     const handelSubmit = event => {
         event.preventDefault();  
+        setInputValue('...');
         
         axios.post(`https://jsonplaceholder.typicode.com/posts`, {
                 userId: 11,
@@ -53,12 +54,20 @@ function ChatBox() {
                             {post.title}
                         </ListGroup.Item>
                     ))   
+                    
                 }  
+                {
+                    inputValue.length ?
+                        <ListGroup.Item key={id} variant="warning" style={chatMessRight} className="m-2 p-2 rounded border shadow-sm justify-items-right text-right">
+                            {inputValue.length ? inputValue : null}
+                        </ListGroup.Item> 
+                        : null   
+                } 
             </ListGroup>
             
-            <Form className="d-flex rounded mt-2" onClick={handelSubmit}> 
+            <Form className="d-flex rounded mt-2" > 
                 <input type="text" value={inputValue} placeholder="..." className="mr-2 col-10 form-control" onChange={onChangeHandler}></input>
-                <Button type="submit" className="rounded col-2" variant="secondary">SEND</Button>
+                <Button type="submit" className="rounded col-2" variant="secondary" onClick={handelSubmit}>SEND</Button>
             </Form>
 
         </Container> 
