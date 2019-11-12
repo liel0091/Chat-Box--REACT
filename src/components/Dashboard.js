@@ -2,6 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import { Row, Col, Alert, Button } from 'react-bootstrap';
 import ChatList from './ChatList';
 import ChatBox from './ChatBox'; 
+import ChatBoxWithBoot from './ChatBoxWithBoot';
  
 export const ChooseContext = createContext();
 
@@ -35,7 +36,8 @@ function Dashboard() {
                 <Col className="pt-4" xs={12} sm={8} style={dashbordCol}>  
                     {
                         (choose.choose === true) ? 
-                            <ChatBox chooseFriend={choose.action}/> :    
+                            <ChatBoxWithBoot chooseFriend={choose.action}/>
+                            /*<ChatBox chooseFriend={choose.action}/> */:    
                             <Alert 
                                 show={true} 
                                 variant="warning"
@@ -46,11 +48,15 @@ function Dashboard() {
                     }   
                 </Col> 
             </Row> 
+            
+           
         </ChooseContext.Provider> 
+
+        
     )
 }
 
-const dashbordCol = {
+const dashbordCol = { 
     borderLeft: 'white solid 5px' 
 }
 
