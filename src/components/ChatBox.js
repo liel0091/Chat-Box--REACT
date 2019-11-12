@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import {Container, Form, ListGroup, Button} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container, Form, ListGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function ChatBox(props) {    
     const [posts, setPosts] = useState([]); 
-    const [inputValue, setInputValue] = useState("");   
+    const [inputValue, setInputValue] = useState("...");   
     const choosenFriend =  props.chooseFriend.value;  
     const choosenId = choosenFriend.id; 
-  
+       
     useEffect(() => {  
         axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${choosenId}`)
             .then(res => {  
@@ -18,14 +18,14 @@ function ChatBox(props) {
             }) 
     }, [choosenId])
 
-    const onChangeHandler = event => { 
-        setInputValue(event.target.value);  
+    const onChangeHandler = event => {  
+        setInputValue(event.target.value);   
     }  
 
-    const handelSubmit = event => {
-        event.preventDefault();  
-        setInputValue("");
-         
+    const handelSubmit = event => { 
+        event.preventDefault();   
+        setInputValue("...");  
+
         axios.post(`https://jsonplaceholder.typicode.com/posts`, {
                 userId: 11,
                 commentId: Math.floor(Math.random() * 100),
@@ -58,7 +58,7 @@ function ChatBox(props) {
                 }  
                 {
                     inputValue.length ?
-                        <ListGroup.Item  
+                        <ListGroup.Item   
                             variant="warning" 
                             style={chatMessRight} 
                             className="m-2 p-2 rounded border shadow-sm justify-items-right text-right"
