@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Form, ListGroup, Button } from 'react-bootstrap';
-import axios from 'axios';
+import { Container, Form, ListGroup, Button } from 'react-bootstrap';  
+import ScrollAnimation from 'react-animate-on-scroll';
+import axios from 'axios'; 
 
 function ChatBox(props) {    
     const [posts, setPosts] = useState([]); 
@@ -41,15 +42,17 @@ function ChatBox(props) {
     }
 
     return (
-        <Container> 
-            <h5 className="mt-2">Chatting with {choosenFriend.name}: </h5>   
-            <ListGroup style={chatBox} className="bg-white border rounded p-2"> 
+        <Container>  
+            <ScrollAnimation animateIn='bounceInRight' animateOut='bounceOutLeft'>
+              <h5 className="mt-2">Chatting with {choosenFriend.name}: </h5>     
+            </ScrollAnimation> 
+            <ListGroup style={chatBox} className="bg-white border rounded p-2">  
                 { 
                     posts.map((post, index) => (
                         <ListGroup.Item 
                             key={index} 
-                            style={(post.userId !== 11) ? chatMessLeft : chatMessRight } 
-                            variant={(post.userId !== 11) ? "primary" : "info" } 
+                            style={(post.userId === 11) ? chatMessRight : chatMessLeft } 
+                            variant={(post.userId === 11) ? "primary" : "info" } 
                             className="m-2 p-2 rounded border shadow-sm text-left"
                         >
                             {post.title}
@@ -57,17 +60,17 @@ function ChatBox(props) {
                     ))    
                 }  
                 {
-                    inputValue.length ?
-                        <ListGroup.Item   
-                            variant="warning" 
-                            style={chatMessRight} 
-                            className="m-2 p-2 rounded border shadow-sm justify-items-right text-right"
-                        >
-                            {inputValue.length ? inputValue : null}
-                        </ListGroup.Item> 
-                        : null   
-                } 
-            </ListGroup>
+                inputValue.length ?
+                    <ListGroup.Item   
+                        variant="warning" 
+                        style={chatMessRight} 
+                        className="m-2 p-2 rounded border shadow-sm justify-items-right text-right"
+                    >
+                        {inputValue.length ? inputValue : null}
+                    </ListGroup.Item> 
+                    : null   
+                }    
+            </ListGroup>  
             
             <Form className="d-flex rounded mt-2"> 
                 <input 
@@ -76,15 +79,15 @@ function ChatBox(props) {
                     placeholder="..."  
                     className="mr-2 form-control" 
                     onChange={onChangeHandler}>
-                </input>
+                </input> 
                 <Button 
                     type="submit"  
                     className="rounded" 
                     variant="secondary" 
                     onClick={handelSubmit}
-                >
-                    SEND
-                </Button>
+                > 
+                    SEND 
+                </Button> 
             </Form> 
         </Container> 
     )
@@ -93,15 +96,17 @@ function ChatBox(props) {
 const chatBox = {
     height: "500px",
     overflow: "scroll"
-}
+} 
 
 const chatMessLeft = {
     width: "fit-content",
+    float: "left",
     alignSelf: "flex-start"
 }
 
 const chatMessRight = {
     width: "fit-content",
+    float: "right",
     alignSelf: "flex-end"
 }
  

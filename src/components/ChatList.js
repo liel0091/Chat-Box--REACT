@@ -1,5 +1,6 @@
 import React, { Fragment, useContext } from 'react';
 import { ListGroup } from 'react-bootstrap';
+import ScrollAnimation from 'react-animate-on-scroll';
 import { ChooseContext } from './Dashboard';
  
 export default function ChatList() { 
@@ -45,7 +46,9 @@ export default function ChatList() {
     return (
         <Fragment> 
             <div className="bg-dark border rounded m-2 pt-2"> 
-                <h5 className="text-light">Who do you wanne chat with? </h5> 
+                <ScrollAnimation animateIn='zoomIn' animateOut='zoomOut'>
+                    <h5 className="text-light">Who do you wanne chat with? </h5> 
+                </ScrollAnimation> 
                 <ListGroup> 
                 {   
                     userList.map( (user, index) => ( 
